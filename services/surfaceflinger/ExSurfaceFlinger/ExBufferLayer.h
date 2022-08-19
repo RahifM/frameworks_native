@@ -55,7 +55,6 @@ protected:
     bool isDebug() { return mDebugLogs; }
     bool mIsGPUAllowedForProtected;
     bool mScreenshot;
-    bool mHasHDRCapabilities;
 };
 
 }; // namespace android
