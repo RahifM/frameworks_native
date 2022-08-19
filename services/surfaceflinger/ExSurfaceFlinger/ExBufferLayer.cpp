@@ -42,12 +42,6 @@
 
 #include "ExBufferLayer.h"
 
-#include <android/hardware/configstore/1.1/ISurfaceFlingerConfigs.h>
-#include <configstore/Utils.h>
-
-using android::hardware::configstore::getBool;
-using android::hardware::configstore::V1_0::ISurfaceFlingerConfigs;
-
 namespace android {
 
 ExBufferLayer::ExBufferLayer(SurfaceFlinger* flinger, const sp<Client>& client,
@@ -79,10 +73,6 @@ ExBufferLayer::ExBufferLayer(SurfaceFlinger* flinger, const sp<Client>& client,
 }
 
 ExBufferLayer::~ExBufferLayer() {
-}
-
-bool ExBufferLayer::hasHdrDisplay() const {
-    return getBool<ISurfaceFlingerConfigs, &ISurfaceFlingerConfigs::hasHDRDisplay>(false);
 }
 
 bool ExBufferLayer::isHDRLayer() const {
