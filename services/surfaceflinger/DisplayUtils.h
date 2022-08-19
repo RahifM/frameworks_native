@@ -58,7 +58,7 @@ class DisplayUtils {
             sp<IGraphicBufferProducer> &producer, sp<IGraphicBufferProducer> bqProducer,
             sp<IGraphicBufferConsumer> bqConsumer, String8 currentStateDisplayName,
             bool currentStateIsSecure);
-    bool canAllocateHwcDisplayIdForVDS(uint64_t usage);
+    bool canAllocateHwcDisplayIdForVDS(int usage);
     bool skipColorLayer(const char* layerType);
     DisplayUtils();
   private:

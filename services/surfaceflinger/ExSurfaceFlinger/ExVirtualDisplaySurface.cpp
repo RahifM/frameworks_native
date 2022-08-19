@@ -47,12 +47,12 @@ ExVirtualDisplaySurface::ExVirtualDisplaySurface(HWComposer& hwc, int32_t dispId
         bool secure)
 :   VirtualDisplaySurface(hwc, dispId, sink, bqProducer, bqConsumer, name),
    mSecure(secure) {
-   sink->getConsumerUsage(&mSinkUsage);
+   sink->query(NATIVE_WINDOW_CONSUMER_USAGE_BITS, &mSinkUsage);
    mSinkUsage |= GRALLOC_USAGE_HW_COMPOSER;
    setOutputUsage(mSinkUsage);
 
     if (HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED == mOutputFormat) {
-        uint64_t sinkUsage = (mSinkUsage & GRALLOC_USAGE_HW_VIDEO_ENCODER);
+        int sinkUsage = (mSinkUsage & GRALLOC_USAGE_HW_VIDEO_ENCODER);
         sinkUsage |= (mSinkUsage & GRALLOC_USAGE_PRIVATE_WFD);
 
         if (!sinkUsage) {

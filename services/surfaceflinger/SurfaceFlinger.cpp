@@ -2553,9 +2553,10 @@ void SurfaceFlinger::processDisplayChangesLocked() {
                             if (maxVirtualDisplaySize == 0 ||
                                  ( (uint64_t)width <= maxVirtualDisplaySize &&
                                  (uint64_t)height <= maxVirtualDisplaySize)) {
-                                uint64_t usage = 0;
+                                int usage = 0;
                                 // Replace with native_window_get_consumer_usage ?
-                                status = state.surface->getConsumerUsage(&usage);
+                                status = state.surface->query(
+                                         NATIVE_WINDOW_CONSUMER_USAGE_BITS, &usage);
                                 ALOGW_IF(status != NO_ERROR, "Unable to query usage (%d)", status);
                                 if ( (status == NO_ERROR) &&
                                      displayUtils->canAllocateHwcDisplayIdForVDS(usage)) {
